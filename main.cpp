@@ -7,46 +7,64 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	Device* device[5];
-	device[0] = new TV(100, 157099, "TTTBV20DDDD", "Apple", 32000); // Количество, цена, IMEI, компания, память в мб
-	device[1] = new PC(300 ,45999, "4394240FSDIIII2329", "ASUS", true, true,  500000, "X64", true); // Количество, цена, IMEI, Компания, мышь, клавиатура, память в мб, процессор, обновляемый
-	device[2] = new TV(500, 67099, "TTTBV20310DDDD", "Samsung", 8196); // Количество, цена, IMEI, компания, память в мб
-	device[3] = new Phone(100, 36300, "439929DSD920000", "Apple", 32000, "M2", true, true); // Количество, цена, IMEI, компания, память в мб, процессор, тачпад, обновляемый
-	device[4] = new Phone(150, 59300, "43992D920000", "Apple", 172000, "M5", true, true); // Количество, цена, IMEI, компания, память в мб, процессор, тачпад, обновляемый
+	std::string IMEI, company,processor;
+	IMEI = "TTTBV20DDDD";
+	company = "APPLE";
+	device[0] = new TV(100, 157099, IMEI, company, 32000); 
+
+
+	IMEI = "4394240FSDIIII2329";
+	company = "ASUS";
+	processor = "X64";
+	device[1] = new PC(300 ,45999, IMEI, company, true, true,  500000, processor, true); 
+	
+	IMEI = "TTTBV20310DDDD";
+	company = "SAMSUNG";
+	processor = "ARM7";
+	device[2] = new TV(500, 67099, IMEI, company, 8196); // РљРѕР»РёС‡РµСЃС‚РІРѕ, С†РµРЅР°, IMEI, РєРѕРјРїР°РЅРёСЏ, РїР°РјСЏС‚СЊ РІ РјР±
+
+	IMEI = "439929DSD920000";
+	company = "APPLE";
+	processor = "M2PRO";
+	device[3] = new Phone(100, 36300, IMEI, company, 32000, processor, true, true); // РљРѕР»РёС‡РµСЃС‚РІРѕ, С†РµРЅР°, IMEI, РєРѕРјРїР°РЅРёСЏ, РїР°РјСЏС‚СЊ РІ РјР±, РїСЂРѕС†РµСЃСЃРѕСЂ, С‚Р°С‡РїР°Рґ, РѕР±РЅРѕРІР»СЏРµРјС‹Р№
+
+	IMEI = "43992D920000";
+	processor = "M5";
+	device[4] = new Phone(150, 59300, IMEI, company, 172000, processor, true, true); // РљРѕР»РёС‡РµСЃС‚РІРѕ, С†РµРЅР°, IMEI, РєРѕРјРїР°РЅРёСЏ, РїР°РјСЏС‚СЊ РІ РјР±, РїСЂРѕС†РµСЃСЃРѕСЂ, С‚Р°С‡РїР°Рґ, РѕР±РЅРѕРІР»СЏРµРјС‹Р№
 
 	bool opened = true;
 	while (opened)
 	{
-		cout << "Добро пожаловать в магазин электроники. " << endl;
-		cout << "Выберите нужный раздел: 1 - Телевизоры, 2 - телефоны, 3 - компьютеры. 0 - Выход." << endl;
+		std::cout << "Welcome to the Electronics Shop. " << std::endl;
+		std::cout << "Please make a choice: 1 - TV\'s, 2 - Phones, 3 - PC\'s. 0 - Exit." << std::endl;
 		short point = 0;
 		short type = 0;
 		short _do = 0;
 		short __count = 0;
 		short this_;
-		cin >> point;
+		std::cin >> point;
 		switch (point)
 		{
 		case 1:
-			cout << "Вы выбрали раздел ТВ. 1 - Apple, 2 - Samsung; 0 - возврат на уровень выше." << endl;
-			cin >> type;
+			std::cout << "You chosed TV . 1 - Apple, 2 - Samsung; 0 - return back." << std::endl;
+			std::cin >> type;
 			switch (type)
 			{
 
 			case 1:
-				cout << "Раздел Apple" << endl;
-				cout << "Вам доступен 1 товар:" << endl;
+				std::cout << "Apple." << std::endl;
+				std::cout << "1 device available:" << std::endl;
 				device[0]->showCharacteristics();
-				cout << endl << "Что вы хотите сделать с данным товаром? Вам доступно 2 опции. 1 - купить 0 - вернуться на раздел выше" << endl;
-				cin >> _do;
+				std::cout << std::endl << "You can choose 2 options. 1 - Buy. 0 - Return back." << std::endl;
+				std::cin >> _do;
 				if (_do == 1)
 				{
-					//Маркер dpoint
 					dpoint:
-					cout << "Сколько вы хотите купить? " << endl;
-					cin >> __count;
+					std::cout << "How much would you like to buy?" << std::endl;
+					std::cin >> __count;
 					if (__count <= 0)
 					{
-						cout << "Вы не можете купить меньше 1 товара" << endl;
+						std::cout << "You cant buy less than 1 device" << std::endl;
 						goto dpoint;
 					}
 					if (__count > 0)
@@ -55,22 +73,22 @@ int main()
 						break;
 					}
 				}
-
+				break;
 			case 2:
-				cout << "Раздел Samsung" << endl;
-				cout << "Вам доступен 1 товар:" << endl;
+				std::cout << "Samsung." << std::endl;
+				std::cout << "1 device available:" << std::endl;
 				device[2]->showCharacteristics();
-				cout << endl << "Что вы хотите сделать с данным товаром? Вам доступно 2 опции. 1 - купить 0 - вернуться на раздел выше" << endl;
-				cin >> _do;
+				std::cout << std::endl << "Р§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ СЃ РґР°РЅРЅС‹Рј С‚РѕРІР°СЂРѕРј? Р’Р°Рј РґРѕСЃС‚СѓРїРЅРѕ 2 РѕРїС†РёРё. 1 - РєСѓРїРёС‚СЊ 0 - РІРµСЂРЅСѓС‚СЊСЃСЏ РЅР° СЂР°Р·РґРµР» РІС‹С€Рµ" << std::endl;
+				std::cin >> _do;
 				if (_do == 1)
 				{
-					//Маркер cpoint
+					//РњР°СЂРєРµСЂ cpoint
 				cpoint:
-					cout << "Сколько вы хотите купить? " << endl;
-					cin >> __count;
+					std::cout << "РЎРєРѕР»СЊРєРѕ РІС‹ С…РѕС‚РёС‚Рµ РєСѓРїРёС‚СЊ? " << std::endl;
+					std::cin >> __count;
 					if (__count <= 0)
 					{
-						cout << "Вы не можете купить меньше 1 товара" << endl;
+						std::cout << "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РєСѓРїРёС‚СЊ РјРµРЅСЊС€Рµ 1 С‚РѕРІР°СЂР°" << std::endl;
 						goto cpoint;
 					}
 					if (__count > 0)
@@ -79,45 +97,41 @@ int main()
 						break;
 					}
 				}
+				break;
 			case 0:
 				break;
 			default:
-				cout << "Введите 0, 1 или 2." << endl;
+				std::cout << "Р’РІРµРґРёС‚Рµ 0, 1 РёР»Рё 2." << std::endl;
 				break;
-
 			}
-
-
-			break;
 		case 2:
-			cout << "Вы выбрали раздел телефоны. 1 - Apple, 0 - возврат на уровень выше." << endl;
-			cin >> type;
+			std::cout << "Р’С‹ РІС‹Р±СЂР°Р»Рё СЂР°Р·РґРµР» С‚РµР»РµС„РѕРЅС‹. 1 - Apple, 0 - РІРѕР·РІСЂР°С‚ РЅР° СѓСЂРѕРІРµРЅСЊ РІС‹С€Рµ." << std::endl;
+			std::cin >> type;
 			switch (type)
 			{
-
 			case 1:
-				cout << "Раздел Apple" << endl;
-				cout << "Вам доступно 2 товара:" << endl;
+				std::cout << "Р Р°Р·РґРµР» Apple" << std::endl;
+				std::cout << "Р’Р°Рј РґРѕСЃС‚СѓРїРЅРѕ 2 С‚РѕРІР°СЂР°:" << std::endl;
 				device[3]->showCharacteristics();
-				cout << endl << endl;
+				std::cout << std::endl << std::endl;
 				device[4]->showCharacteristics();
-				cout << endl << "Чтобы выбрать первый товар, введите 1, чтобы выбрать второй - введите 2:" << endl;
+				std::cout << std::endl << "Р§С‚РѕР±С‹ РІС‹Р±СЂР°С‚СЊ РїРµСЂРІС‹Р№ С‚РѕРІР°СЂ, РІРІРµРґРёС‚Рµ 1, С‡С‚РѕР±С‹ РІС‹Р±СЂР°С‚СЊ РІС‚РѕСЂРѕР№ - РІРІРµРґРёС‚Рµ 2:" << std::endl;
 
-				cin >> this_;
+				std::cin >> this_;
 				if (this_ == 1)
 				{
 					device[3]->showCharacteristics();
-					cout << endl << "Что вы хотите сделать с данным товаром? Вам доступно 2 опции. 1 - купить 0 - вернуться на раздел выше" << endl;
-					cin >> _do;
+					std::cout << std::endl << "Р§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ СЃ РґР°РЅРЅС‹Рј С‚РѕРІР°СЂРѕРј? Р’Р°Рј РґРѕСЃС‚СѓРїРЅРѕ 2 РѕРїС†РёРё. 1 - РєСѓРїРёС‚СЊ 0 - РІРµСЂРЅСѓС‚СЊСЃСЏ РЅР° СЂР°Р·РґРµР» РІС‹С€Рµ" << std::endl;
+					std::cin >> _do;
 					if (_do == 1)
 					{
-						//Маркер rpoint
+						//РњР°СЂРєРµСЂ rpoint
 					rpoint:
-						cout << "Сколько вы хотите купить? " << endl;
-						cin >> __count;
+						std::cout << "РЎРєРѕР»СЊРєРѕ РІС‹ С…РѕС‚РёС‚Рµ РєСѓРїРёС‚СЊ? " << std::endl;
+						std::cin >> __count;
 						if (__count <= 0)
 						{
-							cout << "Вы не можете купить меньше 1 товара" << endl;
+							std::cout << "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РєСѓРїРёС‚СЊ РјРµРЅСЊС€Рµ 1 С‚РѕРІР°СЂР°" << std::endl;
 							goto rpoint;
 						}
 						if (__count > 0)
@@ -134,17 +148,17 @@ int main()
 				if (this_ == 2)
 				{
 					device[4]->showCharacteristics();
-					cout << endl << "Что вы хотите сделать с данным товаром? Вам доступно 2 опции. 1 - купить 0 - вернуться на раздел выше" << endl;
-					cin >> _do;
+					std::cout << std::endl << "Р§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ СЃ РґР°РЅРЅС‹Рј С‚РѕРІР°СЂРѕРј? Р’Р°Рј РґРѕСЃС‚СѓРїРЅРѕ 2 РѕРїС†РёРё. 1 - РєСѓРїРёС‚СЊ 0 - РІРµСЂРЅСѓС‚СЊСЃСЏ РЅР° СЂР°Р·РґРµР» РІС‹С€Рµ" << std::endl;
+					std::cin >> _do;
 					if (_do == 1)
 					{
-						//Маркер tpoint
+						//РњР°СЂРєРµСЂ tpoint
 					tpoint:
-						cout << "Сколько вы хотите купить? " << endl;
-						cin >> __count;
+						std::cout << "РЎРєРѕР»СЊРєРѕ РІС‹ С…РѕС‚РёС‚Рµ РєСѓРїРёС‚СЊ? " << std::endl;
+						std::cin >> __count;
 						if (__count <= 0)
 						{
-							cout << "Вы не можете купить меньше 1 товара" << endl;
+							std::cout << "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РєСѓРїРёС‚СЊ РјРµРЅСЊС€Рµ 1 С‚РѕРІР°СЂР°" << std::endl;
 							goto tpoint;
 						}
 						if (__count > 0)
@@ -158,28 +172,29 @@ int main()
 						break;
 					}
 				}
+				break;
 			case 0:
 				break;
 			default:
-				cout << "Введите 0 или 1." << endl;
+				std::cout << "Р’РІРµРґРёС‚Рµ 0 РёР»Рё 1." << std::endl;
 				break;
 			}
 			break;
 		case 3:
-			cout << "Вы выбрали раздел компьютеры." << endl;
-			cout << "Вам доступен 1 компьютер: " << endl;
+			std::cout << "Р’С‹ РІС‹Р±СЂР°Р»Рё СЂР°Р·РґРµР» РєРѕРјРїСЊСЋС‚РµСЂС‹." << std::endl;
+			std::cout << "Р’Р°Рј РґРѕСЃС‚СѓРїРµРЅ 1 РєРѕРјРїСЊСЋС‚РµСЂ: " << std::endl;
 			device[1]->showCharacteristics();
-			cout << endl << "Что вы хотите сделать с данным товаром? Вам доступно 2 опции. 1 - купить 0 - вернуться на раздел выше" << endl;
-			cin >> _do;
+			std::cout << std::endl << "Р§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ СЃ РґР°РЅРЅС‹Рј С‚РѕРІР°СЂРѕРј? Р’Р°Рј РґРѕСЃС‚СѓРїРЅРѕ 2 РѕРїС†РёРё. 1 - РєСѓРїРёС‚СЊ 0 - РІРµСЂРЅСѓС‚СЊСЃСЏ РЅР° СЂР°Р·РґРµР» РІС‹С€Рµ" << std::endl;
+			std::cin >> _do;
 			if (_do == 1)
 			{
-				//Маркер pvpoint
+				//РњР°СЂРєРµСЂ pvpoint
 			pvpoint:
-				cout << "Сколько вы хотите купить? " << endl;
-				cin >> __count;
+				std::cout << "РЎРєРѕР»СЊРєРѕ РІС‹ С…РѕС‚РёС‚Рµ РєСѓРїРёС‚СЊ? " << std::endl;
+				std::cin >> __count;
 				if (__count <= 0)
 				{
-					cout << "Вы не можете купить меньше 1 товара" << endl;
+					std::cout << "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РєСѓРїРёС‚СЊ РјРµРЅСЊС€Рµ 1 С‚РѕРІР°СЂР°" << std::endl;
 					goto pvpoint;
 				}
 				if (__count > 0)
@@ -195,8 +210,6 @@ int main()
 			break;
 		case 0:
 			return 0;
-			break;
 		}
 	}
-	
 }
