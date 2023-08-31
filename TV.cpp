@@ -2,17 +2,17 @@
 
 void TV::showCharacteristics()
 {
-	cout << "TV characteristics:" << endl;
-	cout << "Count: " << _count << endl;
-	cout << "Price: " << _price << endl;
-	cout << "IMEI: " << _IMEI << endl;
-	cout << "Company: " << _company << endl;
-	cout << "Diagonal: " << _diagonal << endl;
+	std::cout << "TV characteristics:" << std::endl;
+	std::cout << "Count: " << _count << std::endl;
+	std::cout << "Price: " << _price << std::endl;
+	std::cout << "IMEI: " << _IMEI << std::endl;
+	std::cout << "Company: " << _company << std::endl;
+	std::cout << "Diagonal: " << _diagonal << std::endl;
 }
 
 void TV::buy(int count) 
 {
 	_count -= count;
-	cout << "You bought TV:" << endl;
-	cout << "Count left: " << _count << endl;
+	std::cout << "You bought TV:" << std::endl;
+	std::cout << "Count left: " << _count << std::endl;
 }
