@@ -2,34 +2,28 @@
 
 void Phone::showCharacteristics()
 {
-	cout << "Phone characteristics:" << endl;
-	cout << "Count: " << _count << endl;
-	cout << "Price: " << _price << endl;
-	cout << "IMEI: " << _IMEI << endl;
-	cout << "Company: " << _company << endl;
-	cout << "Memory: " << _memory << endl;
-	cout << "Processor: " << _processor << endl;
+	std::cout << "Phone characteristics:" << std::endl;
+	std::cout << "Count: " << _count << std::endl;
+	std::cout << "Price: " << _price << std::endl;
+	std::cout << "IMEI: " << _IMEI << std::endl;
+	std::cout << "Company: " << _company << std::endl;
+	std::cout << "Memory: " << _memory << std::endl;
+	std::cout << "Processor: " << _processor << std::endl;
 	if (_updatable)
-	{
-		cout << "Updatable. " << endl;
-	}
+		std::cout << "Updatable. " << std::endl;
 	else
-	{
-		cout << "Non - updatable. " << endl;
-	}
+		std::cout << "Non - updatable. " << std::endl;
+
 	if (_touchPad)
-	{
-		cout << "Have TouchPad  " << endl;
-	}
+		std::cout << "Have TouchPad  " << std::endl;
 	else
-	{
-		cout << "Dont have TouchPad  " << endl;
-	}
+		std::cout << "Dont have TouchPad  " << std::endl;
 }
 
 void Phone::buy(int count)
 {
 	_count -= count;
-	cout << "You bought phones " << count << endl;
-	cout << "Count left: " << _count << endl;
+	std::cout << "You bought phones " << count << std::endl;
+	std::cout << "Count left: " << _count << std::endl;
 }
+
