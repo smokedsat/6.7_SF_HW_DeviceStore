@@ -2,42 +2,33 @@
 
 void PC::showCharacteristics()
 {
-	cout << "PC characteristics:" << endl;
-	cout << "Count: " << _count << endl;
-	cout << "Price: " << _price << endl;
-	cout << "IMEI: " << _IMEI << endl;
-	cout << "Company: " << _company << endl;
-	cout << "Memory: " << _memory << endl;
-	cout << "Processor: " << _processor << endl;
+	std::cout << "PC characteristics:" << std::endl;
+	std::cout << "Count: " << _count << std::endl;
+	std::cout << "Price: " << _price << std::endl;
+	std::cout << "IMEI: " << _IMEI << std::endl;
+	std::cout << "Company: " << _company << std::endl;
+	std::cout << "Memory: " << _memory << std::endl;
+	std::cout << "Processor: " << _processor << std::endl;
+
 	if (_updatable)
-	{
-		cout << "Updatable. " << endl;
-	}
+		std::cout << "Updatable. " << std::endl;
 	else
-	{
-		cout << "Non - updatable. " << endl;
-	}
+		std::cout << "Non - updatable. " << std::endl;
+
 	if (_mouse)
-	{
-		cout << "Have mouse  " << endl;
-	}
+		std::cout << "Have mouse  " << std::endl;
 	else
-	{
-		cout << "Dont have mouse  " << endl;
-	}
+		std::cout << "Dont have mouse  " << std::endl;
+
 	if (_keyboard)
-	{
-		cout << "Have keyboard  " << endl;
-	}
+		std::cout << "Have keyboard  " << std::endl;
 	else
-	{
-		cout << "Dont have keyboard  " << endl;
-	}
+		std::cout << "Dont have keyboard  " << std::endl;
 }
 
 void PC::buy(int count)
 {
 	_count -= count;
-	cout << "You bought PC " << count << endl;
-	cout << "Count left: " << _count << endl;
+	std::cout << "You bought PC " << count << std::endl;
+	std::cout << "Count left: " << _count << std::endl;
 }
